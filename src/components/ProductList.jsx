@@ -4,7 +4,7 @@ const ProductList = ({ products, setEditingProduct, deleteProduct }) => {
   return (
     <div className="bg-gray-50 p-6 rounded-3xl shadow-lg border border-gray-200 mt-6">
       <h2 className="text-4xl font-semibold text-gray-800 mb-4">
-        Product List
+        Products
       </h2>
       <div className="overflow-x-auto">
         <table className="min-w-full text-sm text-gray-700">
@@ -35,7 +35,7 @@ const ProductList = ({ products, setEditingProduct, deleteProduct }) => {
                   <td className="px-6 py-3 text-center space-x-2">
                     <button
                       onClick={() => setEditingProduct(product)}
-                      className="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-indigo-500 hover:to-purple-500 text-white text-sm font-medium px-4 py-2 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+                      className="inline-block bg-blue-500 hover:from-indigo-500 hover:to-purple-500 text-white text-sm font-medium px-4 py-2 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
                     >
                       Edit
                     </button>

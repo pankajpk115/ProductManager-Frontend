@@ -73,9 +73,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-500 to-blue-500 py-10 px-4">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-        <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
+        <h1 className="text-3xl font-bold text-gray-500 mb-6 text-center">
           Product Manager
         </h1>
 
