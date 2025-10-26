@@ -13,7 +13,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Reusable axios instance (optional)
   const api = axios.create({
     baseURL: BASE_URL,
     headers: { "Content-Type": "application/json" },
