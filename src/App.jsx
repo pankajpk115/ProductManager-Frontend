@@ -3,7 +3,7 @@ import axios from "axios";
 import ProductList from "./components/ProductList.jsx";
 import ProductForm from "./components/ProductForm.jsx";
 
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "http://localhost:5000/api/products" || 'https://productmanager-backend-vd2u.onrender.com/api/products';
 
 function App() {
   const [products, setProducts] = useState([]);
