@@ -3,9 +3,9 @@ import axios from "axios";
 import ProductList from "./components/ProductList.jsx";
 import ProductForm from "./components/ProductForm.jsx";
 
-const API_URL =
+const BASE_URL =
   import.meta.env.VITE_API_URL ||
-  "https://productmanager-backend-vd2u.onrender.com/api/products";
+  "https://productmanager-backend-vd2u.onrender.com";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -13,12 +13,19 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Reusable axios instance (optional)
+  const api = axios.create({
+    baseURL: BASE_URL,
+    headers: { "Content-Type": "application/json" },
+  });
+
   // Fetch all products
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(API_URL);
+      const res = await api.get("/api/products");
       setProducts(res.data);
+      setError("");
     } catch (err) {
       console.error("❌ Error fetching products:", err);
       setError("Failed to load products. Please try again later.");
@@ -34,7 +41,7 @@ function App() {
   // Add product
   const addProduct = async (product) => {
     try {
-      await axios.post(API_URL, product);
+      await api.post("/api/products", product);
       fetchProducts();
     } catch (err) {
       console.error("❌ Error adding product:", err);
@@ -42,10 +49,10 @@ function App() {
     }
   };
 
-  // Update product
+  // Update
   const updateProduct = async (id, product) => {
     try {
-      await axios.put(`${API_URL}/${id}`, product);
+      await api.put(`/api/products/${id}`, product);
       setEditingProduct(null);
       fetchProducts();
     } catch (err) {
@@ -54,10 +61,10 @@ function App() {
     }
   };
 
-  // Delete product
+  // Delete
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await api.delete(`/api/products/${id}`);
       fetchProducts();
     } catch (err) {
       console.error("❌ Error deleting product:", err);
@@ -69,7 +76,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-10 px-4">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
         <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
-          🛒 Product Manager
+          Product Manager
         </h1>
 
         {error && (
